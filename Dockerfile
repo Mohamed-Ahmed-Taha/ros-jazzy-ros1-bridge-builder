@@ -77,15 +77,26 @@ RUN if [[ $(uname -m) = "arm64" || $(uname -m) = "aarch64" ]]; then             
 # 6.) Compile custom msgs
 ###########################
 
-RUN git clone https://github.com/Mohamed-Ahmed-Taha/custom-ros-bridge-messages && \
-    cd /custom-ros-bridge-messages/ros1_ws && \
+RUN git clone https://github.com/TommyChangUMD/custom_msgs && \
+    cd /custom_msge/custom_msgs_ros1 && \
     unset ROS_DISTRO && \
     source /opt/ros/noetic/setup.bash && \
     time colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release && \
-    cd /custom-ros-bridge-messages/ros2_ws && \
+    cd /custom_msge/custom_msgs_ros2 && \
     unset ROS_DISTRO && \
     source /opt/ros/jazzy/setup.bash && \
     time colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+# My repo of custom messages
+# RUN git clone https://github.com/Mohamed-Ahmed-Taha/custom-ros-bridge-messages && \
+#     cd /custom-ros-bridge-messages/ros1_ws && \
+#     unset ROS_DISTRO && \
+#     source /opt/ros/noetic/setup.bash && \
+#     time colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release && \
+#     cd /custom-ros-bridge-messages/ros2_ws && \
+#     unset ROS_DISTRO && \
+#     source /opt/ros/jazzy/setup.bash && \
+#     time colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 ###########################
 # 7.) Compile ros1_bridge
